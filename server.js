@@ -56,11 +56,14 @@ function queryDatabase() {
             });
 
             //process.exit();
-            return returnString;
 
         })
         .catch(err => {
             console.log(err);
         });
+
+    console.log("about to return");
+    return returnString;
+
 
 }
