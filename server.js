@@ -29,8 +29,8 @@ app.listen(port, function(){
 });
 
 app.get('/test', function(request, response){
-  queryDatabase()
-  response.end("Hello world! \n");
+  var send = queryDatabase();
+  response.end("Hello world! \n" + send);
 });
 
 
@@ -41,6 +41,8 @@ function queryDatabase() {
 
     console.log(`Running query to PostgreSQL server: ${config.host}`);
 
+    var returnString = "";
+
     const query = 'SELECT * FROM inventory;';
 
     client.query(query)
@@ -48,6 +50,7 @@ function queryDatabase() {
             const rows = res.rows;
 
             rows.map(row => {
+                returnString += JSON.stringify(row); // TODO
                 console.log(`Read: ${JSON.stringify(row)}`);
             });
 
@@ -56,4 +59,6 @@ function queryDatabase() {
         .catch(err => {
             console.log(err);
         });
+
+    return returnString;
 }
