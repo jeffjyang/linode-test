@@ -31,7 +31,7 @@ app.listen(port, function(){
 app.get('/test', function(request, response){
   //var send = queryDatabase(function);
   var send = queryDatabase(response,returnFunc);
-  response.end("Hello world! \n" + send);
+  //response.end("Hello world! \n" + send);
 });
 
 
