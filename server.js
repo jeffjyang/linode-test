@@ -28,18 +28,18 @@ app.listen(port, function(){
   console.log("Express app listening on port " + port);
 });
 
+
 app.get('/test', function(request, response){
-  //var send = queryDatabase(function);
-  queryDatabase(response,returnFunc);
-  //response.end("Hello world! \n" + send);
+  console.log("New GET request");
+  queryDatabase(response, sendResponse);
 });
 
 
 
-function queryDatabase(response,callback){
+function queryDatabase(response, callback){
   console.log(`Running query to PostgreSQL server: ${config.host}`);
 
-  var returnString = "hello! ";
+  var JSONString = "";
 
   const query = 'SELECT * FROM inventory;';
 
@@ -48,12 +48,12 @@ function queryDatabase(response,callback){
           const rows = res.rows;
 
           rows.map(row => {
-              returnString += JSON.stringify(row);
-              console.log(returnString);
+              JSONString += JSON.stringify(row);
+              //console.log(returnString);
               //console.log(`Read: ${JSON.stringify(row)}`);
           });
 
-          callback(response,returnString);
+          callback(response, JSONString);
           //process.exit(); NOTE this terminates the server
 
       })
@@ -63,8 +63,8 @@ function queryDatabase(response,callback){
 
 }
 
-function returnFunc(response,string){
+function sendResponse(response, returnString){
   console.log("callback execute");
-  response.end(string);
+  response.end(returnString);
 
 }
