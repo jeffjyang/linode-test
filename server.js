@@ -30,13 +30,13 @@ app.listen(port, function(){
 
 app.get('/test', function(request, response){
   //var send = queryDatabase(function);
-  var send = queryDatabase(returnFunc());
+  var send = queryDatabase(returnFunc);
   response.end("Hello world! \n" + send);
 });
 
 
 
-function queryDatabase(callback()){
+function queryDatabase(callback){
   console.log(`Running query to PostgreSQL server: ${config.host}`);
 
   var returnString = "hello! ";
@@ -54,13 +54,13 @@ function queryDatabase(callback()){
           });
 
           //process.exit();
+          callback(returnString);
 
       })
       .catch(err => {
           console.log(err);
       });
 
-      callback(returnString);
 }
 
 function returnFunc(string){
