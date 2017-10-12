@@ -29,14 +29,47 @@ app.listen(port, function(){
 });
 
 app.get('/test', function(request, response){
-  var send = queryDatabase();
+  //var send = queryDatabase(function);
+  var send = queryDatabse(returnFunc());
   response.end("Hello world! \n" + send);
 });
 
 
 
+function queryDatabase(callback){
+  console.log(`Running query to PostgreSQL server: ${config.host}`);
+
+  var returnString = "hello! ";
+
+  const query = 'SELECT * FROM inventory;';
+
+  client.query(query)
+      .then(res => {
+          const rows = res.rows;
+
+          rows.map(row => {
+              returnString += JSON.stringify(row); // TODO
+              console.log(returnString);
+              //console.log(`Read: ${JSON.stringify(row)}`);
+          });
+
+          //process.exit();
+
+      })
+      .catch(err => {
+          console.log(err);
+      });
+
+      callback(returnString);
+}
+
+function returnFunc(string){
+  console.log("callback execute");
+  return string;
+}
 
 
+/*
 function queryDatabase() {
 
     console.log(`Running query to PostgreSQL server: ${config.host}`);
@@ -67,3 +100,4 @@ function queryDatabase() {
 
 
 }
+*/
