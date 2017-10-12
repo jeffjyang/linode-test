@@ -51,7 +51,7 @@ function queryDatabase() {
                 console.log(`Read: ${JSON.stringify(row)}`);
             });
 
-            process.exit();
+            //process.exit();
         })
         .catch(err => {
             console.log(err);
