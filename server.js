@@ -1,4 +1,4 @@
-const express = requre('express');
+const express = require('express');
 const app = express();
 
 var port = 8080;
@@ -28,6 +28,7 @@ app.listen(port, function(){
   console.log("Express app listening on port " + port);
 });
 
+app.get('/test', queryDatabase());
 
 
 
