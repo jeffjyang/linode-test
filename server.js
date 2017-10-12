@@ -30,6 +30,7 @@ app.listen(port, function(){
 
 app.get('/test', function(request, response){
   queryDatabase()
+  response.end("Hello world! \n");
 });
 
 
