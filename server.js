@@ -20,7 +20,7 @@ const client = new pg.Client(config);
 
 client.connect(err => {
     if (err) throw err;
-    else { queryDatabase(); }
+    //else { queryDatabase(); }
 });
 
 
