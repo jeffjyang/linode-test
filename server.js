@@ -36,7 +36,7 @@ app.get('/test', function(request, response){
 
 
 
-function queryDatabase(callback){
+function queryDatabase(callback()){
   console.log(`Running query to PostgreSQL server: ${config.host}`);
 
   var returnString = "hello! ";
