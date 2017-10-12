@@ -1,5 +1,10 @@
 const pg = require('pg');
 
+// lol
+var http = require('http');
+
+
+
 const config = {
     host: 'moonwalk-1.postgres.database.azure.com',
     // Do not hard code your username and password.
@@ -17,6 +22,23 @@ client.connect(err => {
     if (err) throw err;
     else { queryDatabase(); }
 });
+
+
+
+
+
+http.createServer(function (req, res) {
+  res.writeHead(200, queryDatabase());
+  res.end('Hello World\n');
+}).listen(8080, '173.255.216.97');
+console.log('Server running at http://173.255.216.97:8080/');
+
+
+
+
+
+
+
 
 function queryDatabase() {
 
