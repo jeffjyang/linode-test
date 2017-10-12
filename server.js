@@ -1,12 +1,12 @@
 const pg = require('pg');
 
 const config = {
-    host: '<your-db-server-name>.postgres.database.azure.com',
+    host: 'moonwalk-1.postgres.database.azure.com',
     // Do not hard code your username and password.
     // Consider using Node environment variables.
-    user: '<your-db-username>',
-    password: '<your-password>',
-    database: '<name-of-database>',
+    user: process.env.USER,
+    password: process.env.PASS,
+    database: 'postgres',
     port: 5432,
     ssl: true
 };
