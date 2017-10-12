@@ -50,8 +50,8 @@ function queryDatabase() {
             const rows = res.rows;
 
             rows.map(row => {
-                returnString += JSON.stringify(row); // TODO
-                console.log(`Read: ${JSON.stringify(row)}`);
+                returnString += ${JSON.stringify(row)}; // TODO
+                //console.log(`Read: ${JSON.stringify(row)}`);
             });
 
             //process.exit();
