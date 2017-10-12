@@ -28,7 +28,9 @@ app.listen(port, function(){
   console.log("Express app listening on port " + port);
 });
 
-app.get('/test', queryDatabase());
+app.get('/test', function(request, response){
+  queryDatabase()
+});
 
 
 
