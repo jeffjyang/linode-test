@@ -1,9 +1,10 @@
+const express = requre('express');
+const app = express();
+
+var port = 8080;
+
+
 const pg = require('pg');
-
-// lol
-var http = require('http');
-
-
 
 const config = {
     host: 'moonwalk-1.postgres.database.azure.com',
@@ -23,14 +24,9 @@ client.connect(err => {
     //else { queryDatabase(); }
 });
 
-
-
-
-
-http.createServer(queryDatabase()).listen(8080, '173.255.216.97');
-console.log('Server running at http://173.255.216.97:8080/');
-
-
+app.listen(port, function(){
+  console.log("Express app listening on port " + port);
+});
 
 
 
