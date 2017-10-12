@@ -41,7 +41,7 @@ function queryDatabase() {
 
     console.log(`Running query to PostgreSQL server: ${config.host}`);
 
-    var returnString = "";
+    var returnString = "hello! ";
 
     const query = 'SELECT * FROM inventory;';
 
@@ -50,7 +50,8 @@ function queryDatabase() {
             const rows = res.rows;
 
             rows.map(row => {
-                returnString += ${JSON.stringify(row)}; // TODO
+                returnString += JSON.stringify(row); // TODO
+                console.log(returnString);
                 //console.log(`Read: ${JSON.stringify(row)}`);
             });
 
