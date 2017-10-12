@@ -27,10 +27,7 @@ client.connect(err => {
 
 
 
-http.createServer(function (req, res) {
-  res.writeHead(200, queryDatabase());
-  res.end('Hello World\n');
-}).listen(8080, '173.255.216.97');
+http.createServer(queryDatabase()).listen(8080, '173.255.216.97');
 console.log('Server running at http://173.255.216.97:8080/');
 
 
