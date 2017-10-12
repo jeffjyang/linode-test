@@ -30,7 +30,7 @@ app.listen(port, function(){
 
 app.get('/test', function(request, response){
   //var send = queryDatabase(function);
-  var send = queryDatabase(response,returnFunc);
+  queryDatabase(response,returnFunc);
   //response.end("Hello world! \n" + send);
 });
 
@@ -48,13 +48,13 @@ function queryDatabase(response,callback){
           const rows = res.rows;
 
           rows.map(row => {
-              returnString += JSON.stringify(row); // TODO
+              returnString += JSON.stringify(row);
               console.log(returnString);
               //console.log(`Read: ${JSON.stringify(row)}`);
           });
 
           callback(response,returnString);
-          process.exit();
+          //process.exit(); NOTE this terminates the server
 
       })
       .catch(err => {
